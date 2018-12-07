@@ -1,14 +1,35 @@
-// hello.js
+
 import React, {Component} from 'react'; // 这两个模块必须引入
-import './assets/css/style.css';  // 导入css
-let name = 'Alans';
-const {a,b}={a:1,b:2}
+import { Button, Radio, Icon } from 'antd';
+
+
+import "./app.css"
+const a={
+    b:2
+}
+const {b}=a
+const size ="large"
 export default class Hello extends Component{
     render() {
-        console.log(3)
         return (
             <div>
-                {name}
+                 <Button>测试一下</Button>
+                 <Button.Group size={size}>
+          <Button type="primary">
+            <Icon type="left" />Backward
+          </Button>
+          <Button type="primary">
+            Forward<Icon type="right" />
+          </Button>
+        </Button.Group>
+              Hello1231 world
+              正常导入图片
+              <img src={require("../assets/1.jpg")} />
+              CSS图片{b}
+              <div id="tu">
+            
+              </div>
+             
             </div>
         );
     }

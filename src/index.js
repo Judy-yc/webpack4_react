@@ -1,4 +1,3 @@
-//index.js 
 import React from 'react';
 import ReactDOM from "react-dom";
 import App from './app'; // 可省略.js后缀名
