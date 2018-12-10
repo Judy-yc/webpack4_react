@@ -1,10 +1,6 @@
-div{
-    color: red;
-    font-size: 24px;
+.normal {
+	color: green;
 }
-#tu{
-    width: 500px;
-    height: 600px;
-    display: flex;
-    background: url("../assets/1.jpg")
+:local(.normal) {
+	color: red;
 }
