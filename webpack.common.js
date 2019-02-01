@@ -12,14 +12,22 @@ module.exports = {
 		publicPath: '/' //  "/" 或者  "./"代表资源的查找路径
 	},
 	resolve: {
-		extensions: [ '.js', '.jsx', '.json' ]
+		extensions: ['.js', '.jsx', '.json']
 	},
 	module: {
-		rules: [
+		rules: [{
+				enforce: "pre",
+				test: /(\.jsx|\.js)$/,
+				use: {
+					loader: "eslint-loader",
+				},
+				exclude: [
+					path.resolve(__dirname, "./node_modules"),
+				],
+			},
 			{
 				test: /\.(png|jpg|svg|gif)$/,
-				use: [
-					{
+				use: [{
 						loader: 'url-loader',
 						options: {
 							limit: 1000,
@@ -46,13 +54,21 @@ module.exports = {
 			}
 		]
 	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+			name: 'vendor',
+		},
+	},
 	plugins: [
 		new webpack.BannerPlugin('嘻哈'),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, '/src/index.template.html'),
 			title: '嘻哈',
 			inject: true
-		})
+		}),
+
+
 		//复制文件的插件
 		// new CopyWebpackPlugin([{
 		//     // 要复制的目录

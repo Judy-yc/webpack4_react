@@ -7,22 +7,20 @@ const path = require('path');
 module.exports = merge(common, {
 	devtool: 'cheap-module-eval-source-map',
 	module: {
-		rules: [
-			{
-				test: /\.css$/,
-				use: [
-					'style-loader',
-					{
-						loader: 'css-loader',
-						options: {
-							modules: true,
-							localIdentName: '[name]__[local]-[hash:base64:5]'
-						}
-					},
-					'postcss-loader'
-				]
-			}
-		]
+		rules: [{
+			test: /\.css$/,
+			use: [
+				'style-loader',
+				{
+					loader: 'css-loader',
+					options: {
+						modules: true,
+						localIdentName: '[name]__[local]_[hash:base64:5]'
+					}
+				},
+				'postcss-loader'
+			]
+		}]
 	},
 	devServer: {
 		// 设置服务器从那个目录提供内容，告知服务器，观察 devServer.contentBase 下的文件。
@@ -47,5 +45,5 @@ module.exports = merge(common, {
 		historyApiFallback: true,
 		hot: true //是否启动热模块替换
 	},
-	plugins: [ new webpack.HotModuleReplacementPlugin() ]
+	plugins: [new webpack.HotModuleReplacementPlugin()]
 });
