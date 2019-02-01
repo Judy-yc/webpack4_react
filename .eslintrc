@@ -14,8 +14,8 @@
   },
   "extends": "airbnb",
   "rules": {
-    "semi": [0],
-    "quotes": [1, "double"]
-
+    "react/jsx-filename-extension": [0],
+    "react/no-multi-comp": [0],
+    "import/no-unresolved": [0]
   }
 }
