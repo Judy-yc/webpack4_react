@@ -1,0 +1,14 @@
+package.json
+1:"husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"  -->执行git commit 命令的时候执行后面的命令
+    }
+  },
+//lint-staged 取得所有被提交的文件依次执行写好的任务（ESLint 和 Prettier）
+2: "lint-staged": {
+    "*.@(js|jsx)": [
+      "prettier --write", --> --write：默认prettier是直接标准输出到终端的，这个配置代表直接改写文件。
+      "eslint --fix --quiet",
+      "git add"  -->修改完成执行git add命令
+    ]
+  }
