@@ -16,9 +16,7 @@ class Compute extends Component {
     // do something
   }
 
-  handleAdd = () => {
-    console.log(this.props);
-  };
+  handleAdd = () => {};
 
   render() {
     const {
