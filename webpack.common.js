@@ -10,8 +10,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'js/[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    filename: 'js/[name].[hash:6].js',
+    chunkFilename: 'js/[name].[hash:6].js',
     publicPath: '/', //  "/" 或者  "./"代表资源的查找路径
   },
   resolve: {
@@ -20,6 +20,11 @@ module.exports = {
       '@Views': path.resolve(__dirname, 'src/views/'),
       '@components': path.resolve(__dirname, 'src/components/'),
     },
+    modules: [
+      // 优化模块查找路径
+      path.resolve('src'),
+      path.resolve('node_modules'), // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
+    ],
   },
   module: {
     rules: [
@@ -55,18 +60,34 @@ module.exports = {
       },
       {
         test: /(\.jsx|\.js)$/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: 'babel-loader?cacheDirectory', // 缓存loader执行结果 发现打包速度已经明显提升了
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
       },
     ],
   },
 
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      name: 'vendor',
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2,
+          maxInitialRequests: 5,
+          minSize: 0,
+        },
+        vendor: {
+          // 将第三方模块提取出来
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 10, // 优先
+          enforce: true,
+        },
+      },
     },
+    // 将webpack运行时生成代码打包到runtime.js
+    runtimeChunk: true,
   },
   plugins: [
     new webpack.BannerPlugin('嘻哈'),

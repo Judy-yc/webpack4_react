@@ -39,10 +39,12 @@
     "prettier": "^1.16.4",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
+
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "webpack-bundle-analyzer": "^3.0.3",
     "@babel/runtime-corejs2": "^7.3.1",
     "classnames": "^2.2.6",
     "clean-webpack-plugin": "^0.1.19",

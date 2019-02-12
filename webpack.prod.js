@@ -2,6 +2,8 @@
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -33,5 +35,7 @@ module.exports = merge(common, {
       filename: 'css/[name].css',
       chunkFilename: '[id].css',
     }),
+    // 打包分析工具
+    new BundleAnalyzerPlugin(),
   ],
 });
