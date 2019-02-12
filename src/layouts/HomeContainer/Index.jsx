@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ class HomeContainer extends Component {
   render() {
     const { children } = this.props;
     return (
-      <Fragment>
+      <div>
         <Link to="/home">首页</Link>
         <br />
         <Link to="/login">登陆页</Link>
@@ -19,7 +19,7 @@ class HomeContainer extends Component {
         <br />
         <Link to="/other">hooks</Link>
         {children}
-      </Fragment>
+      </div>
     );
   }
 }

@@ -5,11 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+  },
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'js/[name].js',
-    chunkFilename: '[name].[hash:5].js',
+    filename: 'js/[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     publicPath: '/', //  "/" 或者  "./"代表资源的查找路径
   },
   resolve: {

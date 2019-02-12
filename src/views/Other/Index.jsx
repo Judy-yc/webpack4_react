@@ -2,9 +2,7 @@ import React, { useState, Fragment, useEffect } from 'react';
 
 const Hello = () => {
   const [count, setCount] = useState(0);
-  useEffect(() => {
-    console.log('异步');
-  }, []);
+  useEffect(() => {}, []);
   return (
     <Fragment>
       我是
